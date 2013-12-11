@@ -14,48 +14,40 @@ import cloud4all.qr.QRScanActivity;
 
 public class Main extends NfcWritingActivity
 {
-	private Button button;
-	
-	private String content = "dieguito"; // Change for generating QR and NFC ID tokens.
-		
-	
+    private Button button;
+    private String content = "dieguito"; // Change for generating QR and NFC ID tokens.
+
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        
+
         button = (Button)findViewById(R.id.buttonnfc);
-        button.setOnClickListener(new OnClickListener()
-        {
-			@Override
-			public void onClick(View v)
-			{
-				msg = new NdefLogin(content).createNdefMessage();
-			}
-		});
-        
+        button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                msg = new NdefLogin(content).createNdefMessage();
+            }
+        });
+
         button = (Button)findViewById(R.id.buttonqrgen);
-        button.setOnClickListener(new OnClickListener()
-        {
-			@Override
-			public void onClick(View v)
-			{
-				Intent intent = new Intent(getApplicationContext(), QRGenActivity.class);
-				intent.putExtra(LoginReferences.USERNAME, content);
-				startActivity(intent);
-			}
-		});
-        
+        button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), QRGenActivity.class);
+                intent.putExtra(LoginReferences.USERNAME, content);
+                startActivity(intent);
+            }
+        });
+
         button = (Button)findViewById(R.id.buttonqrread);
-        button.setOnClickListener(new OnClickListener()
-        {
-			@Override
-			public void onClick(View v)
-			{
-				Intent intent = new Intent(getApplicationContext(), QRScanActivity.class);
-				startActivity(intent);
-			}
-		});
+        button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), QRScanActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

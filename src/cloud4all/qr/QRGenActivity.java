@@ -9,20 +9,19 @@ import com.google.zxing.integration.android.IntentIntegrator;
 
 public class QRGenActivity extends Activity
 {
+    private IntentIntegrator ii;
 
-	private IntentIntegrator ii;
-	
-	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
-		ii = new IntentIntegrator(this);
-		
-		Bundle content = getIntent().getExtras();
-		if (content!=null)
-		{
-			String user = content.getString(LoginReferences.USERNAME);
-			ii.shareText(user);
-		}
-	}
+    @Override
+    public void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        ii = new IntentIntegrator(this);
+        
+        Bundle content = getIntent().getExtras();
+        if (content!=null)
+        {
+            String user = content.getString(LoginReferences.USERNAME);
+            ii.shareText(user);
+        }
+    }
 }

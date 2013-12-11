@@ -7,7 +7,7 @@ import android.nfc.NfcAdapter;
 public abstract class NfcActivity extends Activity
 {
 
-	protected NfcAdapter nfcAdapter;
-	protected abstract void resolveIntent(Intent intent);
-	
+    protected NfcAdapter nfcAdapter;
+    protected abstract void resolveIntent(Intent intent);
+
 }
