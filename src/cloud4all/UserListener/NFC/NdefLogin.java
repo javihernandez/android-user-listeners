@@ -24,7 +24,7 @@ public class NdefLogin extends NdefTag
      */
     public NdefLogin(String username) { //, String password)
         user = username;
-        pass = HashUtils.SHA1(password);
+        //pass = HashUtils.SHA1(password);
     }
 
     /**
@@ -37,9 +37,10 @@ public class NdefLogin extends NdefTag
         id = new byte[0],
         mime = MIME_TYPE.getBytes(),
         u = user.getBytes();
-        p = pass.getBytes();
         NdefRecord userRec = new NdefRecord(NdefRecord.TNF_MIME_MEDIA, mime, id, u);
-        NdefRecord passRec = new NdefRecord(NdefRecord.TNF_MIME_MEDIA, mime, id, p);
+        // If we want to add a passworkd too:
+        //p = pass.getBytes();
+        //NdefRecord passRec = new NdefRecord(NdefRecord.TNF_MIME_MEDIA, mime, id, p);
         NdefRecord[] recs = { userRec }; //, passRec };
         NdefMessage msg = new NdefMessage(recs);
         return msg;
