@@ -26,14 +26,14 @@ public class LauchEvent
             {
                 pref.setLogin(userID);
                 Toast.makeText(c, "Login user " + userID, Toast.LENGTH_LONG).show();
-                NetworkAnode.sendRequest(HOST + userID + LOGIN);
+                NetworkAnode.sendRequest(HOST + USER + userID + LOGIN);
             }
         }
         else
         {
             pref.setLogin(userID);
             Toast.makeText(c, "Login user " + userID, Toast.LENGTH_LONG).show();
-            NetworkAnode.sendRequest(HOST + userID + LOGIN);
+            NetworkAnode.sendRequest(HOST + USER + userID + LOGIN);
         }
     }
 
