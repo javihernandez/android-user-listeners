@@ -17,11 +17,16 @@
  **/
 package test;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
+
 import cloud4all.Security.LoginReferences;
 import cloud4all.UserListener.NFC.NdefLogin;
 import cloud4all.UserListener.NFC.NfcWritingActivity;
@@ -31,8 +36,14 @@ import cloud4all.qr.QRScanActivity;
 
 public class Main extends NfcWritingActivity
 {
-    private Button button;
-    private String content = "dieguito"; // Change for generating QR and NFC ID tokens.
+    private Button NFCWriteButton;
+    private Button QRGenButton;
+    private Button QRReadButton;
+
+    private enum UserListenerMode {
+        QR,
+        NFC
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -40,31 +51,72 @@ public class Main extends NfcWritingActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        button = (Button)findViewById(R.id.buttonnfc);
-        button.setOnClickListener(new OnClickListener() {
+        NFCWriteButton = (Button)findViewById(R.id.buttonnfc);
+        NFCWriteButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                msg = new NdefLogin(content).createNdefMessage();
+                storeUserToken(UserListenerMode.NFC);
             }
         });
 
-        button = (Button)findViewById(R.id.buttonqrgen);
-        button.setOnClickListener(new OnClickListener() {
+        QRGenButton = (Button)findViewById(R.id.buttonqrgen);
+        QRGenButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), QRGenActivity.class);
-                intent.putExtra(LoginReferences.USERNAME, content);
-                startActivity(intent);
+                storeUserToken(UserListenerMode.QR);
             }
         });
 
-        button = (Button)findViewById(R.id.buttonqrread);
-        button.setOnClickListener(new OnClickListener() {
+        QRReadButton = (Button)findViewById(R.id.buttonqrread);
+        QRReadButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), QRScanActivity.class);
+                Intent intent = new Intent(getApplicationContext(),
+                                           QRScanActivity.class);
                 startActivity(intent);
             }
         });
     }
+
+    private void storeUserToken(final UserListenerMode mode) {
+        String message = "";
+
+        final EditText input = new EditText(this);
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+
+        if (mode.equals(UserListenerMode.QR)) {
+            message = "Enter userToken to generate the QR code";
+        } else if (mode.equals(UserListenerMode.NFC)) {
+            message = "Enter the userToken to write into the NFC tag";
+        }
+
+        dialog.setMessage(message);
+        dialog.setView(input);
+
+        dialog.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                String userToken = input.getText().toString();
+                if (mode.equals(UserListenerMode.NFC)) {
+                    msg = new NdefLogin(userToken).createNdefMessage();
+                } else if (mode.equals(UserListenerMode.QR)) {
+                    Intent intent = new Intent(getApplicationContext(),
+                                               QRGenActivity.class);
+                    intent.putExtra(LoginReferences.USERNAME, userToken);
+                    startActivity(intent);
+                }
+                return;
+            }
+        });
+
+        dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                // do nothing
+                return;
+            }
+        });
+
+        dialog.create().show();
+    }
+
 }
