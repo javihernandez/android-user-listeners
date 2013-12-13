@@ -8,18 +8,18 @@
         android:id="@+id/buttonnfc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Write NFC TAG"
+        android:text="@string/write_nfc_tag"
     />
     <Button
         android:id="@+id/buttonqrgen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Generate QR code"
+        android:text="@string/generate_qr_code"
     />
     <Button
         android:id="@+id/buttonqrread"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Read QR code"
+        android:text="@string/read_qr_code"
     />
 </LinearLayout>

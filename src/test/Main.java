@@ -86,15 +86,16 @@ public class Main extends NfcWritingActivity
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
 
         if (mode.equals(UserListenerMode.QR)) {
-            message = "Enter userToken to generate the QR code";
+            message = getResources().getString(R.string.qr_message);
         } else if (mode.equals(UserListenerMode.NFC)) {
-            message = "Enter the userToken to write into the NFC tag";
+            message = getResources().getString(R.string.nfc_message);
         }
 
         dialog.setMessage(message);
         dialog.setView(input);
 
-        dialog.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(getResources().getString(R.string.continue_label),
+                                 new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 String userToken = input.getText().toString();
                 if (mode.equals(UserListenerMode.NFC)) {
@@ -109,7 +110,8 @@ public class Main extends NfcWritingActivity
             }
         });
 
-        dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(getResources().getString(R.string.cancel_label),
+                                 new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 // do nothing
                 return;
