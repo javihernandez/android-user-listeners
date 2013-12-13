@@ -46,7 +46,6 @@ TODO
 
 * Add i18n support
 * Improve the UI
-  * Add the ability to create an NFC tag with a given token
   * Improve the design and elements in the UI
 * Ideas for new features
   * Improve login/logout behaviour until the GPII is taking care of it
