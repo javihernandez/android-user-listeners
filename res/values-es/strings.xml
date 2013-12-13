@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GPII User Listeners</string>
+    <!-- Buttons -->
+    <string name="write_nfc_tag">Escribir tag NFC</string>
+    <string name="generate_qr_code">Generar código QR</string>
+    <string name="read_qr_code">Leer código QR</string>
+    <!-- Dialog -->
+    <string name="nfc_message">Introduzca el userToken a escribir en el tag NFC</string>
+    <string name="qr_message">Introduzca el userToken para generar un código QR</string>
+    <string name="continue_label">Continuar</string>
+    <string name="cancel_label">Cancelar</string>
+</resources>
