@@ -22,6 +22,8 @@ start automatically when reading the NFC tag.
 Anyway, for compatibility with other implementations of the GPII, the NFC user
 listener also operates with _text-plain_ NFC record types.
 
+To use the NFC user listener just touch your device with your NFC tag.
+
 ### QR
 
 Our QR user listener depends on a third-party application called **Barcode 
