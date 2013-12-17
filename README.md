@@ -4,7 +4,7 @@ GPII Android User Listeners
 Overview
 --------
 
-**android-user-listeners** is an _all-in-one_ application for android, which is
+**android-user-listeners** is an _all-in-one_ application for Android, which is
 including two user listeners to use within the [GPII](https://github.com/GPII/)
 real-time personalization framework.
 
@@ -12,11 +12,15 @@ At this moment this application supports both **NFC** and **QR** user listeners.
 
 ### NFC
 
-For our NFC user listener we're using our own mime type, so you have to
-write the NFC tag from the application before using it.
+When writing an NFC tag, **android-user-listeners** will use its own _mime-type_,
+so the resulting NFC tags can't be used to log into different implementations
+of the GPII until they implement the support of this mime type.
 
-With this mime type, the login/logout process will start automatically when
-reading the NFC tag.
+The benefit from using this _mime-type_, is that the login/logout process will
+start automatically when reading the NFC tag.
+
+Anyway, for compatibility with other implementations of the GPII, the NFC user
+listener also operates with _text-plain_ NFC record types.
 
 ### QR
 
@@ -44,10 +48,16 @@ As an alternative to ant, you can use any other IDE such as **Eclipse** or
 TODO
 ----
 
-* Add i18n support
+* Add translations:
+  * Greek
+  * German
 * Improve the UI
   * Improve the design and elements in the UI
-* Ideas for new features
+* New features
   * Improve login/logout behaviour until the GPII is taking care of it
-  * Add text-based login facilities
+  * Allow the user to choose between _text-plain_ and _mime-type_ when writing
+an NFC tag.
+  * Provide more feedback to the user:
+    * "Unable to connect" (ie: when the GPII is not running) issues
+    * Confirming when an NFC tag has (or not) been written
 
