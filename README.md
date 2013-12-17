@@ -47,6 +47,10 @@ To install the apk, use `adb install <path-to-apk>`.
 As an alternative to ant, you can use any other IDE such as **Eclipse** or 
 **IntelliJ**.
 
+Also, you can get and install the application (without building it by your own)
+by downloading any of the released apk files of the project [here](https://github.com/javihernandez/android-user-listeners/releases)
+from your Android device.
+
 TODO
 ----
 
