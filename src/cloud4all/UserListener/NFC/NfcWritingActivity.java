@@ -38,14 +38,18 @@ public class NfcWritingActivity extends NfcActivity
     protected void onResume()
     {
         super.onResume();
-        nfcAdapter.enableForegroundDispatch(this, pi, null, null);
+        if (nfcAdapter != null) {
+            nfcAdapter.enableForegroundDispatch(this, pi, null, null);
+        }
     }
 
     @Override
     protected void onPause()
     {
         super.onPause();
-        nfcAdapter.disableForegroundDispatch(this);
+        if (nfcAdapter != null) {
+            nfcAdapter.disableForegroundDispatch(this);
+        }
     }
 
     @Override

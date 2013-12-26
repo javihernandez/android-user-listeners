@@ -20,6 +20,7 @@ package test;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -58,6 +59,12 @@ public class Main extends NfcWritingActivity
                 storeUserToken(UserListenerMode.NFC);
             }
         });
+
+        // Disable NFC button if the device doesn't support NFC
+        //
+        if (NfcAdapter.getDefaultAdapter(this) == null) {
+            NFCWriteButton.setEnabled(false);
+        }
 
         QRGenButton = (Button)findViewById(R.id.buttonqrgen);
         QRGenButton.setOnClickListener(new OnClickListener() {
