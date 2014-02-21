@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GPII User Listeners</string>
+    <!-- Buttons -->
+    <string name="write_nfc_tag">Δημιούργησε ένα NFC tag</string>
+    <string name="generate_qr_code">Δημιούργησε ένα QR code</string>
+    <string name="read_qr_code">Διάβασε ένα QR code</string>
+    <!-- Dialog -->
+    <string name="nfc_message">Εισαγωγή ταυτότητας χρήστη (userToken) για τη δημιουργία NFC tag</string>
+    <string name="qr_message">Εισαγωγή ταυτότητας χρήστη (userToken) για τη δημιουργία QR code</string>
+    <string name="continue_label">Συνέχεια</string>
+    <string name="cancel_label">Ακύρωση</string>
+</resources>
