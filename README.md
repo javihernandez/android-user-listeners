@@ -54,9 +54,6 @@ from your Android device.
 TODO
 ----
 
-* Add translations:
-  * Greek
-  * German
 * Improve the UI
   * Improve the design and elements in the UI
 * New features
